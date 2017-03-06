@@ -26,7 +26,7 @@ public class TresEnRayaUI extends JFrame {
 
 	public TresEnRayaUI() {
 		Modelo modelo=new Modelo();
-		
+		//s
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setBounds(100, 100, 317, 346);
