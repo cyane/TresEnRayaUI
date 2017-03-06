@@ -11,6 +11,9 @@ public class Modelo {
 	private int[] fichaMovida=new int[2];
 	private int[] coordenadas = { 0, 0 };
 	private boolean Poner;
+	int coordenadaAntiguaX;
+	int coordenadaAntiguaY;
+	int[] posicionAntigua={coordenadaAntiguaX,coordenadaAntiguaY};
 	
 	public boolean getPoner() {
 		return Poner;
@@ -23,6 +26,12 @@ public class Modelo {
 	}
 	public void setTablero(int[][] tablero) {
 		this.tablero = tablero;
+	}
+	public void setCoordenadaAntiguaX(int coordenadaAntiguaX) {
+		this.coordenadaAntiguaX=coordenadaAntiguaX;
+	}
+	public void setCoordenadaAntiguaY(int coordenadaAntiguaY) {
+		this.coordenadaAntiguaY=coordenadaAntiguaY;
 	}
 	
 	public int getCont() {
@@ -112,7 +121,11 @@ public class Modelo {
 	public boolean estaEnElTablero(int i, int j) {
 		return i>=0&&i<=2&&j>=0&&j<=2;
 	}
-	
+	public boolean comprobarCasillaLindante(int posicionFinalX, int posicionFinalY) {
+		int[] posicionFinal={posicionFinalX,posicionFinalY};
+		// TODO rellenar
+		return true;
+	}
 
 
 public  boolean TresEnLinea( ){
