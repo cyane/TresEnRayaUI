@@ -11,7 +11,7 @@ public class Modelo {
 	private int[] fichaMovida=new int[2];
 	private int[] coordenadas = { 0, 0 };
 	private boolean Poner;
-	int coordenadaAntiguaX;
+	int coordenadaAntiguaX; 
 	int coordenadaAntiguaY;
 	int[] posicionAntigua={coordenadaAntiguaX,coordenadaAntiguaY};
 	

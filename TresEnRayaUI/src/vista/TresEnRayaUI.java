@@ -443,7 +443,7 @@ public class TresEnRayaUI extends JFrame {
 				}
 			}
 		});
-		btn21.setName("Boton8");
+		btn21.setName("Boton8"); 
 		panel.add(btn21);
 		
 	
