@@ -23,6 +23,7 @@ public class TresEnRayaUI extends JFrame {
 	private JTextField textJugadorActual;
 	private JTextField textTurno;
 	protected JTextField textMensajes;
+	protected int[] posicionAntigua;
 
 	public TresEnRayaUI() {
 		Modelo modelo=new Modelo();
@@ -78,8 +79,8 @@ public class TresEnRayaUI extends JFrame {
 					textMensajes.setText("Seleccione una ficha a mover");
 					if(modelo.getPoner()){	
 						if(modelo.comprobarCasillaVacia(0, 0)){
-							if(modelo.comprobarCasillaLindante(0,0)){ 
-							textMensajes.setText("he pasado de ti");
+							if(!modelo.comprobarCasillaLindante(0,0)){ 
+							
 							modelo.ponerFicha(0, 0);
 							modelo.setCont(modelo.getCont()+1);
 							textJugadorActual.setText(String.valueOf(modelo.cambiarJugador()));
@@ -93,13 +94,21 @@ public class TresEnRayaUI extends JFrame {
 							textMensajes.setText("no ves que la casilla esta ocupada!");
 						}
 					}else{
-						if(modelo.fichaAMover(0, 0)){
-							modelo.setPoner(true);
-							btn00.setText("");
-							modelo.setCoordenadaAntiguaX(0); modelo.setCoordenadaAntiguaY(0); 
-							textMensajes.setText("Seleccione donde ponerla");
-						}
-					}
+						if(!modelo.fichaVacía(0,0)){
+			                textMensajes.setText("La casilla está vacía");
+						}else if(!modelo.fichaPropia(0,0)){
+			                textMensajes.setText("Selecciona tus propias fichas, inutil!");
+						} else if(modelo.fichaEncerrada(0, 0)){
+			                textMensajes.setText("¿No ves que la ficha está rodeada?");
+						}else{
+						modelo.setPoner(true);
+						modelo.vaciarFicha(0,0);
+						btn00.setText(""); 
+						posicionAntigua[0]=0;posicionAntigua[1]=0;
+						modelo.setPosicionAntigua(posicionAntigua);
+						textMensajes.setText("Seleccione donde ponerla");
+					   }
+		        	}
 				}
 				if(modelo.TresEnLinea()&&modelo.getCont()>5){
 					textMensajes.setText("Ha perdido, Jugador: "+modelo.getTurno());
@@ -132,8 +141,8 @@ public class TresEnRayaUI extends JFrame {
 					textMensajes.setText("Seleccione una ficha a mover");
 					if(modelo.getPoner()){	
 						if(modelo.comprobarCasillaVacia(0, 1)){
-							if(modelo.comprobarCasillaLindante(0,1)){ 
-							textMensajes.setText("he pasado de ti");
+							if(!modelo.comprobarCasillaLindante(0,1)){ 
+							
 							modelo.ponerFicha(0, 1);
 							modelo.setCont(modelo.getCont()+1);
 							textJugadorActual.setText(String.valueOf(modelo.cambiarJugador()));
@@ -147,13 +156,21 @@ public class TresEnRayaUI extends JFrame {
 							textMensajes.setText("no ves que la casilla esta ocupada!");
 						}
 					}else{
-						if(modelo.fichaAMover(0, 1)){
-							modelo.setPoner(true);
-							btn01.setText("");
-							modelo.setCoordenadaAntiguaX(0); modelo.setCoordenadaAntiguaY(1); 
-							textMensajes.setText("Seleccione donde ponerla");
-						}
-					}
+						if(!modelo.fichaVacía(0,1)){
+			                textMensajes.setText("La casilla está vacía");
+						}else if(!modelo.fichaPropia(0, 1)){
+			                textMensajes.setText("Selecciona tus propias fichas, inutil!");
+						} else if(modelo.fichaEncerrada(0, 1)){
+			                textMensajes.setText("¿No ves que la ficha está rodeada?");
+						}else{
+						modelo.setPoner(true);
+						modelo.vaciarFicha(0,1);
+						btn01.setText(""); 
+						posicionAntigua[0]=0;posicionAntigua[1]=1;
+						modelo.setPosicionAntigua(posicionAntigua);
+						textMensajes.setText("Seleccione donde ponerla");
+					   }
+		        	}
 				}
 				if(modelo.TresEnLinea()&&modelo.getCont()>5){
 					textMensajes.setText("Ha perdido, Jugador: "+modelo.getTurno());
@@ -186,8 +203,8 @@ public class TresEnRayaUI extends JFrame {
 					textMensajes.setText("Seleccione una ficha a mover");
 					if(modelo.getPoner()){	
 						if(modelo.comprobarCasillaVacia(0, 2)){
-							if(modelo.comprobarCasillaLindante(0,2)){ 
-							textMensajes.setText("he pasado de ti");
+							if(!modelo.comprobarCasillaLindante(0,2)){ 
+							
 							modelo.ponerFicha(0, 2);
 							modelo.setCont(modelo.getCont()+1);
 							textJugadorActual.setText(String.valueOf(modelo.cambiarJugador()));
@@ -201,13 +218,21 @@ public class TresEnRayaUI extends JFrame {
 							textMensajes.setText("no ves que la casilla esta ocupada!");
 						}
 					}else{
-						if(modelo.fichaAMover(0, 2)){
-							modelo.setPoner(true);
-							btn02.setText("");
-							modelo.setCoordenadaAntiguaX(0); modelo.setCoordenadaAntiguaY(2); 
-							textMensajes.setText("Seleccione donde ponerla");
-						}
-					}
+						if(!modelo.fichaVacía(0,2)){
+			                textMensajes.setText("La casilla está vacía");
+						}else if(!modelo.fichaPropia(0, 2)){
+			                textMensajes.setText("Selecciona tus propias fichas, inutil!");
+						} else if(modelo.fichaEncerrada(0,2)){
+			                textMensajes.setText("¿No ves que la ficha está rodeada?");
+						}else{
+						modelo.setPoner(true);
+						modelo.vaciarFicha(0,2);
+						btn02.setText(""); 
+						posicionAntigua[0]=0;posicionAntigua[1]=2;
+						modelo.setPosicionAntigua(posicionAntigua); 
+						textMensajes.setText("Seleccione donde ponerla");
+					   }
+		        	}
 				}
 				if(modelo.TresEnLinea()&&modelo.getCont()>5){
 					textMensajes.setText("Ha perdido, Jugador: "+modelo.getTurno());
@@ -240,8 +265,7 @@ public class TresEnRayaUI extends JFrame {
 					textMensajes.setText("Seleccione una ficha a mover");
 					if(modelo.getPoner()){	
 						if(modelo.comprobarCasillaVacia(1, 0)){
-							if(modelo.comprobarCasillaLindante(1,0)){ 
-							textMensajes.setText("he pasado de ti");
+							if(!modelo.comprobarCasillaLindante(1,0)){ 
 							modelo.ponerFicha(1, 0);
 							modelo.setCont(modelo.getCont()+1);
 							textJugadorActual.setText(String.valueOf(modelo.cambiarJugador()));
@@ -255,13 +279,21 @@ public class TresEnRayaUI extends JFrame {
 							textMensajes.setText("no ves que la casilla esta ocupada!");
 						}
 					}else{
-						if(modelo.fichaAMover(1, 0)){
-							modelo.setPoner(true);
-							btn10.setText("");
-							modelo.setCoordenadaAntiguaX(1); modelo.setCoordenadaAntiguaY(0); 
-							textMensajes.setText("Seleccione donde ponerla");
-						}
-					}
+						if(!modelo.fichaVacía(1,0)){
+			                textMensajes.setText("La casilla está vacía");
+						}else if(!modelo.fichaPropia(1, 0)){
+			                textMensajes.setText("Selecciona tus propias fichas, inutil!");
+						} else if(modelo.fichaEncerrada(1, 0)){
+			                textMensajes.setText("¿No ves que la ficha está rodeada?");
+						}else{
+						modelo.setPoner(true);
+						modelo.vaciarFicha(1,0);
+						btn10.setText(""); 
+						posicionAntigua[0]=1;posicionAntigua[1]=0;
+						modelo.setPosicionAntigua(posicionAntigua); 
+						textMensajes.setText("Seleccione donde ponerla");
+					   }
+		        	}
 				}
 				if(modelo.TresEnLinea()&&modelo.getCont()>5){
 					textMensajes.setText("Ha perdido, Jugador: "+modelo.getTurno());
@@ -308,7 +340,7 @@ public class TresEnRayaUI extends JFrame {
 					textMensajes.setText("Seleccione una ficha a mover");
 					if(modelo.getPoner()){	
 						if(modelo.comprobarCasillaVacia(1, 2)){
-							if(modelo.comprobarCasillaLindante(1,2)){ 
+							if(!modelo.comprobarCasillaLindante(1,2)){ 
 							modelo.ponerFicha(1, 2);
 							modelo.setCont(modelo.getCont()+1);
 							textJugadorActual.setText(String.valueOf(modelo.cambiarJugador()));
@@ -322,13 +354,21 @@ public class TresEnRayaUI extends JFrame {
 							textMensajes.setText("no ves que la casilla esta ocupada!");
 						}
 					}else{
-						if(modelo.fichaAMover(1, 2)){
-							modelo.setPoner(true);
-							btn12.setText("");
-							modelo.setCoordenadaAntiguaX(1); modelo.setCoordenadaAntiguaY(2); 
-							textMensajes.setText("Seleccione donde ponerla");
-						}
-					}
+						if(!modelo.fichaVacía(1,2)){
+			                textMensajes.setText("La casilla está vacía");
+						}else if(!modelo.fichaPropia(1, 2)){
+			                textMensajes.setText("Selecciona tus propias fichas, inutil!");
+						} else if(modelo.fichaEncerrada(1, 2)){
+			                textMensajes.setText("¿No ves que la ficha está rodeada?");
+						}else{
+						modelo.setPoner(true);
+						modelo.vaciarFicha(1,2);
+						btn12.setText(""); 
+						posicionAntigua[0]=1;posicionAntigua[1]=2;
+						modelo.setPosicionAntigua(posicionAntigua); 
+						textMensajes.setText("Seleccione donde ponerla");
+					   }
+		        	}
 				}
 				if(modelo.TresEnLinea()&&modelo.getCont()>5){
 					textMensajes.setText("Ha perdido, Jugador: "+modelo.getTurno());
@@ -361,7 +401,7 @@ public class TresEnRayaUI extends JFrame {
 					textMensajes.setText("Seleccione una ficha a mover");
 					if(modelo.getPoner()){	
 						if(modelo.comprobarCasillaVacia(2, 0)){ 
-							if(modelo.comprobarCasillaLindante(2,0)){ 
+							if(!modelo.comprobarCasillaLindante(2,0)){ 
 							modelo.ponerFicha(2, 0);
 							modelo.setCont(modelo.getCont()+1);
 							textJugadorActual.setText(String.valueOf(modelo.cambiarJugador()));
@@ -374,13 +414,21 @@ public class TresEnRayaUI extends JFrame {
 						}else{
 						}
 					}else{
-						if(modelo.fichaAMover(2, 0)){
-							modelo.setPoner(true);
-							btn20.setText("");
-							modelo.setCoordenadaAntiguaX(2); modelo.setCoordenadaAntiguaY(0); 
-							textMensajes.setText("Seleccione donde ponerla");
-						}
-					}
+						if(!modelo.fichaVacía(2,0)){
+			                textMensajes.setText("La casilla está vacía");
+						}else if(!modelo.fichaPropia(2, 0)){
+			                textMensajes.setText("Selecciona tus propias fichas, inutil!");
+						} else if(modelo.fichaEncerrada(2, 0)){
+			                textMensajes.setText("¿No ves que la ficha está rodeada?");
+						}else{
+						modelo.setPoner(true);
+						modelo.vaciarFicha(2,0);
+						btn20.setText(""); 
+						posicionAntigua[0]=2;posicionAntigua[1]=0;
+						modelo.setPosicionAntigua(posicionAntigua);
+						textMensajes.setText("Seleccione donde ponerla");
+					   }
+		        	}
 				}
 				if(modelo.TresEnLinea()&&modelo.getCont()>5){
 					textMensajes.setText("Ha perdido, Jugador: "+modelo.getTurno());
@@ -413,7 +461,7 @@ public class TresEnRayaUI extends JFrame {
 					textMensajes.setText("Seleccione una ficha a mover");
 					if(modelo.getPoner()){	
 						if(modelo.comprobarCasillaVacia(2, 1)){
-							if(modelo.comprobarCasillaLindante(2,1)){ 
+							if(!modelo.comprobarCasillaLindante(2,1)){ 
 							modelo.ponerFicha(2, 1);
 							modelo.setCont(modelo.getCont()+1);
 							textJugadorActual.setText(String.valueOf(modelo.cambiarJugador()));
@@ -427,13 +475,21 @@ public class TresEnRayaUI extends JFrame {
 							textMensajes.setText("no ves que la casilla esta ocupada!");
 						}
 					}else{
-						if(modelo.fichaAMover(2, 1)){
-							modelo.setPoner(true);
-							btn21.setText("");
-							modelo.setCoordenadaAntiguaX(2); modelo.setCoordenadaAntiguaY(1); 
-							textMensajes.setText("Seleccione donde ponerla");
-						}
-					}
+						if(!modelo.fichaVacía(2,1)){
+			                textMensajes.setText("La casilla está vacía");
+						}else if(!modelo.fichaPropia(2, 1)){
+			                textMensajes.setText("Selecciona tus propias fichas, inutil!");
+						} else if(modelo.fichaEncerrada(2, 1)){
+			                textMensajes.setText("¿No ves que la ficha está rodeada?");
+						}else{
+						modelo.setPoner(true);
+						modelo.vaciarFicha(2,1);
+						btn21.setText(""); 
+						posicionAntigua[0]=2;posicionAntigua[1]=1;
+						modelo.setPosicionAntigua(posicionAntigua);
+						textMensajes.setText("Seleccione donde ponerla");
+					   }
+		        	}
 				}
 				if(modelo.TresEnLinea()&&modelo.getCont()>5){
 					textMensajes.setText("Ha perdido, Jugador: "+modelo.getTurno());
@@ -466,7 +522,7 @@ public class TresEnRayaUI extends JFrame {
 					textMensajes.setText("Seleccione una ficha a mover");
 					if(modelo.getPoner()){	
 						if(modelo.comprobarCasillaVacia(2, 2)){
-							if(modelo.comprobarCasillaLindante(2,2)){ 
+							if(!modelo.comprobarCasillaLindante(2,2)){ 
 							modelo.ponerFicha(2, 2);
 							modelo.setCont(modelo.getCont()+1);
 							textJugadorActual.setText(String.valueOf(modelo.cambiarJugador()));
@@ -480,14 +536,23 @@ public class TresEnRayaUI extends JFrame {
 							textMensajes.setText("no ves que la casilla esta ocupada!");
 						}
 					}else{
-						if(modelo.fichaAMover(2, 2)){
+							if(!modelo.fichaVacía(2,2)){
+				                textMensajes.setText("La casilla está vacía");
+							}else if(!modelo.fichaPropia(2, 2)){
+				                textMensajes.setText("Selecciona tus propias fichas, inutil!");
+							} else if(modelo.fichaEncerrada(2, 2)){
+				                textMensajes.setText("¿No ves que la ficha está rodeada?");
+							}else{
 							modelo.setPoner(true);
-							btn22.setText("");
-							modelo.setCoordenadaAntiguaX(2); modelo.setCoordenadaAntiguaY(2); 
+							modelo.vaciarFicha(2,2);
+							btn22.setText(""); 
+							posicionAntigua[0]=2;posicionAntigua[1]=2;
+							modelo.setPosicionAntigua(posicionAntigua);
 							textMensajes.setText("Seleccione donde ponerla");
-						}
-					}
+						   }
+			        	}
 				}
+				
 				if(modelo.TresEnLinea()&&modelo.getCont()>5){
 					textMensajes.setText("Ha perdido, Jugador: "+modelo.getTurno());
 					btn00.setEnabled(false);	btn01.setEnabled(false);	btn02.setEnabled(false);
