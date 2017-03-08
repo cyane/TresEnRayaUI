@@ -6,7 +6,7 @@ import modelo.Modelo;
 import vista.TresEnRayaUI;
 import controlador.Control;
 
-public class Principal {
+public class Principal{
 	/**
 	 * Launch the application.
 	 */

@@ -11,7 +11,6 @@ public class Modelo {
 	private int[] fichaMovida=new int[2];
 	private int[] coordenadas = { 0, 0 };
 	private boolean Poner;
-	int[] posicionAntigua=new int[2];
 	
 	public boolean getPoner() {
 		return Poner;
@@ -24,14 +23,6 @@ public class Modelo {
 	}
 	public void setTablero(int[][] tablero) {
 		this.tablero = tablero;
-	}
-
-	
-	public int[] getPosicionAntigua() {
-		return posicionAntigua;
-	}
-	public void setPosicionAntigua(int[] posicionAntigua) {
-		this.posicionAntigua = posicionAntigua;
 	}
 	public int getCont() {
 		return cont;
@@ -121,6 +112,7 @@ public class Modelo {
 	  }  
 	public boolean comprobarCasillaLindante(int posicionFinalX, int posicionFinalY) {
 		int[] posicionFinal={posicionFinalX,posicionFinalY};
+		int[] posicionAntigua=new int[2];
 			  if((posicionFinal[0]-posicionAntigua[0]<=1&&posicionFinal[0]-posicionAntigua[0]>=(-1))&&(posicionFinal[1]-posicionAntigua[1]<=1&&posicionFinal[1]-posicionAntigua[1]>=(-1))){
 				   return true;  
 			  }else{
